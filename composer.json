@@ -1,0 +1,25 @@
+{
+    "name": "wdalmut/dns-srv",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "4.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Walter Dal Mut",
+            "email": "walter.dalmut@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Corley\\Service\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Corley\\Service\\": "tests/"
+        }
+    }
+}
