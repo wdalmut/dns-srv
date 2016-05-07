@@ -73,6 +73,14 @@ class ResolveTest extends \PHPUnit_Framework_TestCase
         $resolve->resolve("hello");
     }
 
+    public function benchmarkResolve($b)
+    {
+        $dns = new Resolve(new Dns());
+        for ($i=0; $i<$b->times(); $i++) {
+            $dns->resolve("www.corsi.walterdalmut.com");
+        }
+    }
+
     private function prepareDns($values)
     {
         $dns = $this->prophesize("Corley\\Service\\Dns");

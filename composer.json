@@ -2,7 +2,8 @@
     "name": "wdalmut/dns-srv",
     "type": "library",
     "require-dev": {
-        "phpunit/phpunit": "4.*"
+        "phpunit/phpunit": "4.*",
+        "wdalmut/php-bench": "^0.1.2"
     },
     "license": "MIT",
     "authors": [

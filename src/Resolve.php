@@ -62,8 +62,8 @@ class Resolve
         for ($i=0; $i<12; $i++) {
             $sum += mt_rand(0, mt_getrandmax()) / mt_getrandmax();
         }
-        $sum /= 6;
+        $sum -= 6;
 
-        return $records[round($sum * (count($records)-1))];
+        return $records[round(abs($sum) / 6 * count($records))];
     }
 }

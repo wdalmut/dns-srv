@@ -6,8 +6,7 @@ Use DNS SRV records to resolve services.
 2782](https://tools.ietf.org/html/rfc2782))
 
  * use a RR algorithm over weights in order to select the right
-   service (as RFC). The RR uses a standard distribution (mean 1, variance
-   1/2).
+   service (as RFC). The RR uses a standard distribution (mean 0, variance 1).
 
 
 ```php
