@@ -11,11 +11,10 @@ Use DNS SRV records to resolve services.
 
 
 ```php
-use Corley\Service\Cache;
 use Corley\Service\Dns;
 use Corley\Service\Resolve;
 
-$dns = new Resolve(new Dns(new Cache()));
+$dns = new Resolve(new Dns());
 
 $config = $dns->resolve("www.corsi.walterdalmut.com");
 

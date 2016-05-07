@@ -3,19 +3,9 @@ namespace Corley\Service;
 
 class Dns
 {
-    public function __construct(Cache $cache)
-    {
-        $this->cache = $cache;
-    }
-
     public function resolve($name)
     {
-        $records = $this->cache->get($name);
-        if (!$records) {
-            $records = $this->cache->set($name, $this->dnsGetRecord($name));
-        }
-
-        return $records;
+        return $this->dnsGetRecord($name);
     }
 
     protected function dnsGetRecord($name)
