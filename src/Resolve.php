@@ -10,6 +10,11 @@ class Resolve
         $this->dns = $dns;
     }
 
+    /**
+     * Get a single resolution with the lowest priority and the right weight
+     *
+     * @return The single resolution element
+     */
     public function resolve($name)
     {
         $records = $this->dns->resolve($name);
@@ -24,6 +29,24 @@ class Resolve
         return $this->selectRandomly($records);
     }
 
+    /**
+     * Get the list of addresses with the minimum priority
+     *
+     * @return array The minimum priority list of resolutions
+     */
+    public function resolveAll($name)
+    {
+        $records = $this->dns->resolve($name);
+
+        if (!$records) {
+            throw new \InvalidArgumentException("Missing SRV record for: {$name}");
+        }
+
+        $records = $this->filterByLowestPriority($records);
+
+        return $records;
+    }
+
     private function filterByLowestPriority($records)
     {
         return array_reduce($records, function($carry, $item) {
@@ -34,10 +57,12 @@ class Resolve
 
             if ($item["pri"] < $carry[0]["pri"]) {
                 $carry = [$item];
+                return $carry;
             }
 
             if ($item["pri"] == $carry[0]["pri"]) {
                 $carry[] = $item;
+                return $carry;
             }
 
             return $carry;
